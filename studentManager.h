@@ -1,23 +1,29 @@
 #include <iostream>
 #include <string>
+#include "student.h"
 using namespace std;
 
-class WorkManager
+class studentManager
 {
 public:
-    WorkManager();
+    studentManager();
 
     void showMenu();
 
     void Exit();
 
-    ~WorkManager();
+    ~studentManager();
+
+    int m_stuNum;
+
+    Student **m_stuArray;
 };
 
-WorkManager::WorkManager()
+studentManager::studentManager()
 {
+    this->m_stuNum = 0;
 }
-void WorkManager::showMenu()
+void studentManager::showMenu()
 {
     cout << "------------------------------" << endl;
     cout << "      欢迎使用学生管理系统      " << endl;
@@ -31,11 +37,11 @@ void WorkManager::showMenu()
     cout << "           7.清空信息          " << endl;
     cout << endl;
 }
-WorkManager::~WorkManager()
+studentManager::~studentManager()
 {
 }
 
-void WorkManager::Exit()
+void studentManager::Exit()
 {
     cout << "欢迎下次使用" << endl;
     system("pause");

@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
-#include "workManager.h"
+#include "studentManager.h"
 #include "student.h"
 int main()
 {
-    WorkManager wm;
+    studentManager sm;
     Student *stu = NULL;
     stu = new SeStudent(1, 19, "张三", 1);
     stu->showInfo();
@@ -13,14 +13,14 @@ int main()
 
     while (true)
     {
-        wm.showMenu();
+        sm.showMenu();
         cout << "请输入选项" << endl;
         cin >> choice;
 
         switch (choice)
         {
         case '0': // 退出功能
-            wm.Exit();
+            sm.Exit();
             break;
         case '1':
 
