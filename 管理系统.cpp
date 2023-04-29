@@ -1,13 +1,10 @@
 #include <iostream>
 using namespace std;
 #include "studentManager.h"
-#include "student.h"
 int main()
 {
     studentManager sm;
     Student *stu = NULL;
-    stu = new SeStudent(1, 19, "张三", 1);
-    stu->showInfo();
 
     char choice = '0';
 
@@ -23,7 +20,7 @@ int main()
             sm.Exit();
             break;
         case '1':
-
+            sm.Add_stu();
             break;
         case '2':
 
