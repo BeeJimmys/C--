@@ -9,6 +9,8 @@ public:
 
     void showMenu();
 
+    void Exit();
+
     ~WorkManager();
 };
 
@@ -31,4 +33,11 @@ void WorkManager::showMenu()
 }
 WorkManager::~WorkManager()
 {
+}
+
+void WorkManager::Exit()
+{
+    cout << "欢迎下次使用" << endl;
+    system("pause");
+    exit(0);
 }
