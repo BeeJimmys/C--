@@ -14,10 +14,10 @@ public:
     virtual string getMajor() = 0;
 };
 
-class SeStu : public Student
+class SeStudent : public Student
 {
 public:
-    SeStu(int id, int age, string name, int major)
+    SeStudent(int id, int age, string name, int major)
     {
         this->m_id = id;
         this->m_age = age;

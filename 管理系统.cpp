@@ -6,7 +6,7 @@ int main()
 {
     WorkManager wm;
     Student *stu = NULL;
-    stu = new SeStu(1, 19, "张三", 1);
+    stu = new SeStudent(1, 19, "张三", 1);
     stu->showInfo();
 
     char choice = '0';
