@@ -12,6 +12,8 @@ public:
 
     void Exit();
 
+    void Add_stu();
+
     ~studentManager();
 
     int m_stuNum;
@@ -22,6 +24,38 @@ public:
 studentManager::studentManager()
 {
     this->m_stuNum = 0;
+    this->m_stuArray = NULL;
+}
+
+void studentManager::Add_stu()
+{
+    cout << "请输入添加学生的数量：" << endl;
+    int addNum = 0; // 记录学生数量
+    cin >> addNum;
+    if (addNum > 0)
+    {
+        // 新的空间大小
+        int newSize = this->m_stuNum + addNum;
+        Student **newSpace = new Student *[newSize];
+
+        // 原数据放入新空间
+        if (this->m_stuArray = NULL)
+        {
+            for (int i = 0; i < this->m_stuNum; i++)
+            {
+                newSpace[i] = this->m_stuArray[i];
+            }
+        }
+        // 添加新数据
+        for (int i = 0; i < addNum; i++)
+        {
+            int id;
+        }
+    }
+    else
+    {
+        /* code */
+    }
 }
 void studentManager::showMenu()
 {
