@@ -1,9 +1,13 @@
 #include <iostream>
 using namespace std;
 #include "workManager.h"
+#include "student.h"
 int main()
 {
     WorkManager wm;
+    Student *stu = NULL;
+    stu = new SeStu(1, 19, "张三", 1);
+    stu->showInfo();
 
     char choice = '0';
 
