@@ -72,36 +72,42 @@ void studentManager::Add_stu()
             int id;
             int age;
             string name;
-            int major;
+            char major;
             cout << "请输入第" << i + 1 << "个学生编号：" << endl;
             cin >> id;
             cout << "请输入第" << i + 1 << "个学生姓名：" << endl;
             cin >> name;
             cout << "请输入第" << i + 1 << "个学生年龄：" << endl;
             cin >> age;
-            cout << "请选择个学生专业：" << endl;
-            cout << "1.软件工程" << endl;
-            cout << "2.计算机科学与技术" << endl;
-            cout << "3.隐藏选项" << endl;
-            cin >> major;
-
-            // 选择对象，使用基类指针调用子类
             Student *Stu = NULL;
-            switch (major)
+            while (true)
             {
-            case 1:
-                Stu = new SeStudent(id, age, name, 1);
-                break;
-            case 2:
-                Stu = new CsStudent(id, age, name, 2);
-                break;
-            case 3:
-                Stu = new HackStudent(id, age, name, 3);
-                break;
-            default:
-                cout << "请检查输入是否正确" << endl;
-                break;
+
+                cout << "请选择个学生专业：" << endl;
+                cout << "1.软件工程" << endl;
+                cout << "2.计算机科学与技术" << endl;
+                cout << "3.隐藏选项" << endl;
+                cout << "请输入选择:" << endl;
+                cin >> major;
+                // 选择对象，使用基类指针调用子类
+                switch (major)
+                {
+                case '1':
+                    Stu = new SeStudent(id, age, name, 1);
+                    break;
+                case '2':
+                    Stu = new CsStudent(id, age, name, 2);
+                    break;
+                case '3':
+                    Stu = new HackStudent(id, age, name, 3);
+                    break;
+                default:
+                    system("cls"); // 清屏
+                    cout << "请检查输入是否正确！" << endl;
+                    break;
+                }
             }
+
             // 创建学生专业，保存到数组中
             newSpace[this->m_stuNum + i] = Stu;
         }
