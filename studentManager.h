@@ -17,7 +17,8 @@ public:
     void Add_stu();
     // 保存到文件
     void save();
-
+    // 判断文件是否为空
+    bool m_fileIsEmpty;
     ~studentManager();
 
     int m_stuNum;
@@ -27,8 +28,35 @@ public:
 
 studentManager::studentManager()
 {
-    this->m_stuNum = 0;
-    this->m_stuArray = NULL;
+    // 1.文件不存在
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    if (!ifs.is_open())
+    {
+        cout << "文件不存在！" << endl;
+        // 初始化记录人数
+        this->m_stuNum = 0;
+        // 初始化数组指针
+        this->m_stuArray = NULL;
+        this->m_fileIsEmpty = true;
+        ifs.close();
+        return;
+    }
+    // 2.文件为空（存在）
+    char ch;
+    ifs >> ch;
+    if (ifs.eof())
+    {
+        cout << "文件为空！" << endl;
+        // 初始化记录人数
+        this->m_stuNum = 0;
+        // 初始化数组指针
+        this->m_stuArray = NULL;
+        this->m_fileIsEmpty = true;
+        ifs.close();
+        return;
+    }
 }
 
 void studentManager::save()
@@ -80,7 +108,8 @@ void studentManager::Add_stu()
             cout << "请输入第" << i + 1 << "个学生年龄：" << endl;
             cin >> age;
             Student *Stu = NULL;
-            while (true)
+            bool n = true;
+            while (n)
             {
 
                 cout << "请选择个学生专业：" << endl;
@@ -93,12 +122,15 @@ void studentManager::Add_stu()
                 switch (major)
                 {
                 case '1':
+                    n = false;
                     Stu = new SeStudent(id, age, name, 1);
                     break;
                 case '2':
+                    n = false;
                     Stu = new CsStudent(id, age, name, 2);
                     break;
                 case '3':
+                    n = false;
                     Stu = new HackStudent(id, age, name, 3);
                     break;
                 default:
@@ -111,6 +143,7 @@ void studentManager::Add_stu()
             // 创建学生专业，保存到数组中
             newSpace[this->m_stuNum + i] = Stu;
         }
+        // 释放原先空间
         delete[] this->m_stuArray;
 
         // 更改新空间指向
@@ -118,6 +151,10 @@ void studentManager::Add_stu()
 
         // 新学生人数
         this->m_stuNum = newSize;
+
+        // 更新学生不为空标志
+        this->m_fileIsEmpty = false;
+
         // 保存数据
         this->save();
         cout << "添加成功" << addNum << "名学生" << endl;
