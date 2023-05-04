@@ -19,6 +19,9 @@ public:
     void save();
     // 判断文件是否为空
     bool m_fileIsEmpty;
+    // 统计文件中学生人数
+    int get_StuNum();
+
     ~studentManager();
 
     int m_stuNum;
@@ -57,8 +60,30 @@ studentManager::studentManager()
         ifs.close();
         return;
     }
+    // 文件存在且不为空
+    int num = this->get_StuNum();
+    cout << "学生人数为：" << num << endl;
+    this->m_stuNum = num;
+    return;
 }
 
+int studentManager ::get_StuNum()
+{
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    int id;
+    int age;
+    string name;
+    int major;
+    int num = 0;
+    while (ifs >> id && ifs >> age && ifs >> name && ifs >> major)
+    {
+        // 学生人数
+        num++;
+    }
+    return num;
+}
 void studentManager::save()
 {
     ofstream ofs;
